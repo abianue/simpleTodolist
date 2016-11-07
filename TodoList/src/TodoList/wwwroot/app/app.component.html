@@ -1,0 +1,34 @@
+﻿<div class="col-xs-3">
+
+    <div [hidden]="!isLoading">
+        <div class="form-group row">
+            <div class="col-xs-10">
+                <input type="text" class="form-control" placeholder="Add to list" [(ngModel)]="newTodoName" />
+            </div>
+            <div class="col-xs-2">
+                <button class="btn btn-primary" [ngClass]="{disabled:newTodoName.length==0}" (click)="addTodoItem()">Add</button>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div *ngIf="hasTodos()">
+                <ul class="list-group">
+                    <li *ngFor="let item of todoList" class="list-group-item">
+                        <input type="checkbox" class="custom-control-input" [(ngModel)]="item.isCompleted" (click)="todoChange(item)" />
+                        <span>{{item.name}}</span>
+                        <span class="pull-right delete-control" (click)="deleteTodoItem(item.id)"></span>
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="!hasTodos()" class="col-xs-12 text-center text-info bg-info">
+                Empty
+            </div>
+        </div>
+
+    </div>
+
+    <div [hidden]="isLoading">
+        Nothing yet to see
+    </div>
+</div>
