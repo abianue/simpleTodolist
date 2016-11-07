@@ -1,4 +1,4 @@
-/// <binding />
+/// <binding AfterBuild='restore' />
 var gulp = require('gulp');
 
 var libs = './wwwroot/libs/';
